@@ -1,0 +1,19 @@
+.container {
+  max-width: 1200px;
+  padding: 50px 15px 120px;
+  margin: auto;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.4;
+}
+
+:host ::ng-deep #introduce {
+  p {
+    margin: 1em 0;
+  }
+}
+
+@media (max-width: 7668px) {
+  .container {
+    padding: 30px 15px 60px;
+  }
+}

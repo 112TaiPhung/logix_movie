@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <mat-form-field
+    appearance="outline"
+    [class.pr30]="month.value && !month.hasValidator(Validators.required)"
+  >
+    <mat-label>{{ title }}</mat-label>
+    <input
+      matInput
+      [matDatepicker]="monthPicker"
+      [formControl]="month"
+      (focus)="monthPicker.open()"
+      readonly
+    />
+    <mat-datepicker-toggle matSuffix [for]="monthPicker"></mat-datepicker-toggle>
+    <mat-datepicker
+      #monthPicker
+      startView="year"
+      (monthSelected)="monthSelected($event, monthPicker)"
+    >
+    </mat-datepicker>
+    <mat-error>{{ error }}</mat-error>
+  </mat-form-field>
+  <button
+    class="button"
+    mat-icon-button
+    matSuffix
+    *ngIf="month.value && !month.hasValidator(Validators.required)"
+    (click)="clearMonth()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <mat-form-field
+    [class.pr30]="
+      selected.value &&
+      selected.status !== 'DISABLED' &&
+      !selected.hasValidator(Validators.required)
+    "
+    appearance="outline"
+  >
+    <mat-label>{{ title }}</mat-label>
+    <mat-select #matSelect multiple [formControl]="selected">
+      <mat-option *ngIf="enableSelectAll" #allSelected (click)="toggleAllSelection()" value="all"
+        >Chọn tất cả</mat-option
+      >
+      <mat-option *ngFor="let option of options" [value]="option.id" (click)="togglePerOne()">{{
+        option.name
+      }}</mat-option>
+      <mat-select-trigger class="select-trigger">
+        <ng-container *ngFor="let option of options">
+          <ng-container *ngIf="option.id === selected.value?.[0]">
+            <span class="span-elm">{{ option.name }}</span>
+          </ng-container>
+        </ng-container>
+        <span *ngIf="(selected.value?.length || 0) > 1" class="span-count">
+          (+{{ (selected.value?.length || 0) - (!allSelected ? 1 : allSelected.selected ? 2 : 1) }})
+        </span>
+      </mat-select-trigger>
+    </mat-select>
+    <mat-error>{{ error }}</mat-error>
+  </mat-form-field>
+  <button
+    class="button"
+    mat-icon-button
+    matSuffix
+    *ngIf="
+      selected.value &&
+      selected.status !== 'DISABLED' &&
+      !selected.hasValidator(Validators.required)
+    "
+    (click)="clearCheckbox(matSelect)"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

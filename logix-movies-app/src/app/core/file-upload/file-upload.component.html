@@ -1,0 +1,9 @@
+<input
+  #inputFileUpload
+  type="file"
+  id="inputFileUpload"
+  class="file-upload"
+  [accept]="requiredFileType"
+  (change)="changeFile($event)"
+  multiple
+/>

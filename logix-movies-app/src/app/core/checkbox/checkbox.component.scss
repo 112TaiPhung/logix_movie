@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+  .pr30 {
+    ::ng-deep {
+      .mat-form-field-flex {
+        padding-right: 30px;
+      }
+    }
+  }
+  .button {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    .mat-icon {
+      font-size: 18px;
+    }
+  }
+  ::ng-deep {
+    .select-trigger {
+      display: flex;
+    }
+    .span-elm {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      padding-right: 5px;
+    }
+  }
+}

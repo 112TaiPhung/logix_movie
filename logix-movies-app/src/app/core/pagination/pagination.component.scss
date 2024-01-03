@@ -1,0 +1,47 @@
+#pag {
+  margin: 40px 0;
+  .pagination {
+    display: flex;
+    li {
+      cursor: pointer;
+      &.pre,
+      &.next {
+        button {
+          color: #000000;
+          background: #f5f5f5;
+          border: none;
+        }
+      }
+      &.active {
+        button {
+          color: #ffffff;
+          background: #ec1f31;
+        }
+      }
+      button {
+        min-width: auto;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ffffff;
+        color: #ec1f31;
+        border: 1px solid #ec1f31;
+        border-radius: 4px;
+        margin: 0 4px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #pag {
+    margin: 20px 0;
+    .pagination {
+      justify-content: center;
+      li {
+      }
+    }
+  }
+}

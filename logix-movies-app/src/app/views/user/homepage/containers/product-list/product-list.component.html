@@ -1,0 +1,27 @@
+<div id="home">
+  <div class="section-movie">
+    <div class="list-movie">
+      <div *ngFor="let item of dataSource" class="item-movie">
+        <div>{{ item.name }}</div>
+        <video width="100%" controls poster="{{ item.linkAvatar }}">
+          <source src="{{ item.linkVideo }}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="item-movie-footer">
+          <span class="like" (click)="onLikeVideo(item.id, true)">
+            <img src="../../../../../../assets/img/like.png" />
+            {{ item.countLike }}
+          </span>
+          <span class="dont-like" (click)="onLikeVideo(item.id, false)">
+            <img src="../../../../../../assets/img/dont-like.png" />
+            {{ item.countDisLike }}
+          </span>
+        </div>
+      </div>
+      <div class="no-data" *ngIf="!paging.length">
+        <img src="../../../../../../assets/img/svg/no-data.svg" alt="" />
+        <p>No data</p>
+      </div>
+    </div>
+  </div>
+</div>

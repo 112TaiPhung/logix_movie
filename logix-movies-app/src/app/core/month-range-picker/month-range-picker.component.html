@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <mat-form-field
+    [class.pr30]="reactiveForm.value.start && reactiveForm.value.end"
+    appearance="outline"
+    [formGroup]="reactiveForm"
+  >
+    <mat-label>{{ title }}</mat-label>
+    <mat-date-range-input [rangePicker]="monthRangePicker">
+      <input
+        #matStartDate
+        matStartDate
+        (focus)="focusInput(true, monthRangePicker)"
+        formControlName="start"
+        placeholder="Từ tháng"
+        readonly
+      />
+      <input
+        #matEndDate
+        matEndDate
+        (focus)="focusInput(false, monthRangePicker)"
+        formControlName="end"
+        placeholder="Đến tháng"
+        readonly
+      />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix (click)="matStartDate.focus()"></mat-datepicker-toggle>
+    <mat-date-range-picker
+      #monthRangePicker
+      startView="year"
+      (monthSelected)="dateChange($event, matEndDate, monthRangePicker)"
+    ></mat-date-range-picker>
+  </mat-form-field>
+  <button
+    class="button"
+    mat-icon-button
+    matSuffix
+    *ngIf="reactiveForm.value.start && reactiveForm.value.end"
+    (click)="clearMonthRange()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

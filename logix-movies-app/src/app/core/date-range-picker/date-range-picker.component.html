@@ -1,0 +1,38 @@
+<div class="wrapper">
+  <mat-form-field
+    [class.pr30]="dateRange.value.fromDate && dateRange.value.toDate"
+    appearance="outline"
+    [formGroup]="dateRange"
+  >
+    <mat-label>{{ title }}</mat-label>
+    <mat-date-range-input [rangePicker]="dateRangePicker">
+      <input
+        matStartDate
+        (focus)="dateRangePicker.open()"
+        formControlName="fromDate"
+        placeholder="Từ ngày"
+        readonly
+      />
+      <input
+        matEndDate
+        (focus)="dateRangePicker.open()"
+        formControlName="toDate"
+        placeholder="Đến ngày"
+        readonly
+        (dateChange)="changeDateRangePicker()"
+      />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
+    <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
+    <mat-error>{{ error }}</mat-error>
+  </mat-form-field>
+  <button
+    class="button"
+    mat-icon-button
+    matSuffix
+    *ngIf="dateRange.value.fromDate && dateRange.value.toDate"
+    (click)="clearDateRange()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

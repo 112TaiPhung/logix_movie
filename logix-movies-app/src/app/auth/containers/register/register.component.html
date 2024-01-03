@@ -1,0 +1,69 @@
+<auth-layout [title]="'Register new account'">
+  <ng-container auth-layout="body">
+    <form [formGroup]="reactiveForm">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          placeholder="user@example.com"
+          formControlName="email"
+          (keyup.enter)="onSubmit()"
+        />
+        <mat-error *ngIf="formErrors['email']">{{ formErrors['email'] }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="abc"
+          formControlName="username"
+          (keyup.enter)="onSubmit()"
+        />
+        <mat-error *ngIf="formErrors['username']">{{ formErrors['username'] }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          [type]="hidePassword ? 'password' : 'text'"
+          (keyup.enter)="onSubmit()"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hidePassword"
+        >
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="formErrors['password']">{{ formErrors['password'] }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Confirm password</mat-label>
+        <input
+          matInput
+          formControlName="confirmPassword"
+          [type]="hidePassword ? 'password' : 'text'"
+          (keyup.enter)="onSubmit()"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hidePassword"
+        >
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="formErrors['password']">{{ formErrors['password'] }}</mat-error>
+      </mat-form-field>
+      <div class="button-group">
+        <button (click)="onSubmit()" mat-raised-button color="warn">Register</button>
+      </div>
+    </form>
+  </ng-container>
+</auth-layout>

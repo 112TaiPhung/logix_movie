@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <mat-form-field appearance="outline" [class.pr30]="year.value && !year.hasValidator(Validators.required)">
+    <mat-label>Năm</mat-label>
+    <input
+      matInput
+      [matDatepicker]="yearPicker"
+      [formControl]="year"
+      (focus)="yearPicker.open()"
+      readonly
+    />
+    <mat-datepicker-toggle matSuffix [for]="yearPicker"></mat-datepicker-toggle>
+    <mat-datepicker
+      #yearPicker
+      startView="multi-year"
+      (yearSelected)="yearSelected($event, yearPicker)"
+    >
+    </mat-datepicker>
+  </mat-form-field>
+  <button class="button" mat-icon-button matSuffix *ngIf="year.value && !year.hasValidator(Validators.required)" (click)="clearYear()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,31 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  &.collapse {
+    .side-nav {
+      width: 40px;
+    }
+    .side-content {
+      width: calc(100% - 40px);
+    }
+  }
+  .side-nav {
+    width: 220px;
+    background: #0c213a;
+  }
+  .side-content {
+    width: calc(100% - 220px);
+    // width: 100%;
+    background: #ececec;
+    display: flex;
+    flex-direction: column;
+    .content {
+      flex: 1;
+      padding: 12px 30px 30px 30px;
+    }
+  }
+}
+
+#loading-page {
+  z-index: 9999;
+}

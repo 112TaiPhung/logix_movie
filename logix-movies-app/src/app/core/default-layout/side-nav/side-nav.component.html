@@ -1,0 +1,33 @@
+<div class="container" id="sidenav" [ngClass]="{ collapse: isCollapseSidebar }">
+  <h1>
+    <img
+      [src]="isCollapseSidebar ? configsInfo.logoMini : configsInfo.logo"
+      [width]="isCollapseSidebar ? '32' : '160'"
+      alt=""
+    />
+    <button
+      *ngIf="!isCollapseSidebar"
+      mat-mini-fab
+      aria-label="Menu"
+      matTooltip="Thu gọn"
+      (click)="toggleSidebar(true)"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+  </h1>
+  <ul>
+    <ng-container *ngFor="let item of navItems; let i = index">
+      <li *hasPermission="item.attributes.permissions">
+        <a
+          routerLinkActive="active"
+          [routerLink]="item.url"
+          [matTooltip]="isCollapseSidebar ? item.name : ''"
+          matTooltipPosition="right"
+        >
+          <img [src]="item.icon" alt="" />
+          <span>{{ item.name }}</span>
+        </a>
+      </li>
+    </ng-container>
+  </ul>
+</div>

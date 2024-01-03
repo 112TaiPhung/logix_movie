@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>Create movie hub</h1>
+<div mat-dialog-content>
+  <form class="form" [formGroup]="reactiveForm">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="formErrors['name']">{{ formErrors['name'] }}</mat-error>
+    </mat-form-field>
+    <div class="w-100">
+      <p class="file-name" *ngIf="attachment">
+        <mat-icon>description</mat-icon>
+        <span>{{ attachment.name }}</span>
+        <button
+          type="button"
+          mat-mini-fab
+          class="btn-delete"
+          color="primary"
+          (click)="attachment = null"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+      </p>
+      <button
+        *ngIf="!attachment"
+        type="button"
+        mat-button
+        class="btn-upload"
+        (click)="onShowFileBrowser(false)"
+      >
+        <mat-icon>cloud_upload</mat-icon>Add avatar
+      </button>
+    </div>
+    <div class="w-100">
+      <p class="file-name" *ngIf="attachmenMovie">
+        <mat-icon>description</mat-icon>
+        <span>{{ attachmenMovie.name }}</span>
+        <button
+          type="button"
+          mat-mini-fab
+          class="btn-delete"
+          color="primary"
+          (click)="attachmenMovie = null"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+      </p>
+      <button
+        *ngIf="!attachmenMovie"
+        type="button"
+        mat-button
+        class="btn-upload"
+        (click)="onShowFileBrowser(true)"
+      >
+        <mat-icon>cloud_upload</mat-icon>Add file movie(mp4)
+      </button>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button type="button" mat-button mat-dialog-close>Hủy</button>
+  <button type="button" mat-button cdkFocusInitial (click)="onConfirm()">Đồng ý</button>
+</div>

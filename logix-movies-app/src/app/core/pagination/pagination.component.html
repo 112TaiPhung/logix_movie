@@ -1,0 +1,25 @@
+<div id="pag" *ngIf="length && length > pageSize">
+  <ul *ngIf="pager && pager['pages']" class="pagination">
+    <li
+      class="pre"
+      *ngIf="pager['currentPage'] > 1"
+      [ngClass]="{ disabled: pager['currentPage'] === 1 }"
+    >
+      <button mat-button (click)="choosepage(pager.currentPage - 1)">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+    </li>
+    <li *ngFor="let page of pager['pages']" [ngClass]="{ active: pager['currentPage'] === page }">
+      <button mat-button (click)="choosepage(page)">{{ page }}</button>
+    </li>
+    <li
+      class="next"
+      *ngIf="pager['currentPage'] <= pager['totalPages'] - 1"
+      [ngClass]="{ disabled: pager['currentPage'] === pager['totalPages'] }"
+    >
+      <button mat-button (click)="choosepage(pager.currentPage + 1)">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </li>
+  </ul>
+</div>

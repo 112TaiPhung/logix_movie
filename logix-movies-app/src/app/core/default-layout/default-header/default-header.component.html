@@ -1,0 +1,40 @@
+<div class="container" [ngClass]="{ pl30: isCollapseSidebar }">
+  <button
+    *ngIf="isCollapseSidebar"
+    mat-icon-button
+    aria-label="Menu"
+    class="btn-expend"
+    matTooltip="Mở rộng"
+    matTooltipPosition="right"
+    (click)="toggleSidebar(false)"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="breadcrum">
+    <ul>
+      <ng-container *ngFor="let item of breadcrums; let last = last">
+        <li *ngIf="!last">
+          <a routerLink="{{ item.url }}">{{ item.name }}</a>
+        </li>
+        <li *ngIf="last">{{ item.name }}</li>
+      </ng-container>
+    </ul>
+  </div>
+  <div class="user-info">
+    <div class="left">
+      <p class="title">
+        {{ user.userCode }}
+        <ng-container *ngIf="user.agency">- Sàn {{ user.agency.name }}</ng-container>
+      </p>
+      <p *ngIf="user.firstName && user.lastName">{{ user.firstName }} {{ user.lastName }}</p>
+      <p *ngIf="!user.firstName && !user.lastName">{{ user.email }}</p>
+    </div>
+    <div class="right">
+      <img src="../../../../assets/img/user-empty.png" alt="" [matMenuTriggerFor]="menu" />
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item [routerLink]="ROUTERS.ADMIN.PROFILE">Thông tin tài khoản</a>
+        <a mat-menu-item (click)="logout()">Đăng xuất</a>
+      </mat-menu>
+    </div>
+  </div>
+</div>

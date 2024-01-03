@@ -1,0 +1,16 @@
+<div class="auth">
+  <div class="wrapper">
+    <div class="box-title">
+      <!-- <img src="../../../../assets/img/logo-dk.png" alt="" /> -->
+      <h1>Wellcome to movie hub</h1>
+    </div>
+    <div class="box-content">
+      <h4>{{ title }}</h4>
+      <ng-content select="[auth-layout=body]"></ng-content>
+    </div>
+  </div>
+</div>
+
+<div id="loading-page" style="display: none">
+  <mat-spinner></mat-spinner>
+</div>

@@ -1,0 +1,107 @@
+.control-table {
+  .head-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    h3 {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 40px;
+      text-transform: uppercase;
+      color: #4d5d7d;
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      > * {
+        margin-left: 15px;
+      }
+      .form-field {
+        max-width: 280px;
+      }
+      ::ng-deep {
+        .mat-form-field-wrapper {
+          width: 280px;
+          margin: 0 !important;
+          padding: 0 !important;
+          background: #ffffff;
+          border-radius: 5px;
+          .mat-form-field-flex {
+            padding: 0;
+          }
+        }
+      }
+      .btn-white {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 3px;
+      }
+      .btn-create {
+        mat-icon {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+  .filter-control {
+    background: #ffffff;
+    padding: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    padding-right: 40px;
+    position: relative;
+    .btn-clear {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    > * {
+      margin-left: 15px;
+    }
+    // ::ng-deep {
+    //   .mat-form-field-outline > * {
+    //     border: 1px solid #ffffff;
+    //   }
+    // }
+  }
+}
+.mat-menu-item {
+  height: 40px;
+  line-height: 40px;
+  &[disabled] {
+    height: 38px;
+    line-height: 38px;
+    &::after {
+      content: '';
+      width: calc(100% - 32px);
+      height: 1px;
+      background: #e5e5e5;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &:first-of-type::after {
+      content: none;
+    }
+  }
+  .material-icons-outlined {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+}
+:host ::ng-deep {
+  .mat-select-panel .mat-optgroup-label,
+  .mat-select-panel .mat-option {
+    height: 42px !important;
+    font-size: 14px !important;
+    line-height: 42px !important;
+  }
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+}

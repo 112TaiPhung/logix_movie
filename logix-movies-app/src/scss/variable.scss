@@ -1,0 +1,118 @@
+// Variable overrides
+$main-color: #ed2032;
+$warning-color: #f3aa18;
+$text-color: #3E4345;
+$white: #FFF;
+$background-body-color: #F7F9FA;
+$background-modal-color: $background-body-color;
+$error-color: #DA3838;
+$border-color: #e3e5e6;
+$label-color: #919699;
+$placeholder-color: #919799;
+$dark-border-color: #78909C;
+$primary-color: #0F9AB5;
+$light-primary-color: #DBEFF4;
+$primary-pale-color: lighten($primary-color, 20%);
+$secondary-color: #12B9D9;
+$light-gray-color: #F1F3F4;
+
+$success-color: #2fa84f;
+$light-secondary-color: #EAC3C2;
+
+
+$border-radius: 4px;
+$spacing-large: 24px;
+$spacing-small: 8px;
+$spacing-normal: 16px;
+$spacing-xlarge: 32px;
+
+$font-size-large: 24px;
+$font-size-normal: 14px;
+$font-size-small: 12px;
+$font-size-xsmall: 8px;
+
+$input-height: 40px;
+$input-small-height: 32px;
+$input-xsmall-height: 24px;
+
+$font-family: 'Roboto', sans-serif;
+
+$text-dark: #3E4345;
+$text-light: #FFFFFF;
+
+$background-10: #F7F9FA;
+$background-20: #F1F3F4;
+$background-30: #E3E5E5;
+$background-40: #C6CACC;
+$background-60: #919699;
+$background-80: #5E6366;
+$background-90: #3E4345;
+
+$info: #2F7BED;
+$info-normal: #5995F0;
+$info-light: #E1ECFE;
+
+/* Accent Color */
+$success-lighter: #DCF7E3;
+$success-light: #7AC78F;
+$success: #2FA84F;
+$success-dark: #26863F;
+
+$warning-lighter: #FCF3D7;
+$warning-light: #F8CA6D;
+$warning: #F4AC1C;
+$warning-dark: #C38A16;
+
+$error-lighter: #FCEAE2;
+$error-light: #F8966C;
+$error: #F45B19;
+$error-dark: #C34914;
+
+$additional-lighter: #E1D8F1;
+$additional-light: #7F59C2;
+$additional: #673AB7;
+$additional-dark: #59329F;
+
+
+/* Neutral Color */
+$ink-lightest: #919EAB;
+$ink-lighter: #637381;
+$ink-light: #454F5B;
+$ink: #212B36;
+
+$sky-lightest: #F9FAFB;
+$sky-lighter: #F4F6F8;
+$sky-dark: #e8e8e8;
+$sky-darker: #bfbcbc;
+$sky-light: #DFE3E8;
+$sky: #C4CDD5;
+
+
+
+/* Brand color */
+$primary-lighter: #E1ECFE;
+$primary-light: #5995F0;
+$primary: #2F7BED;
+$primary-dark: #2662BD;
+
+$secondary-lightest: #F8EBEB;
+$secondary-lighter: #EAC3C2;
+$secondary-light: #F3A8A6;
+$secondary: #BA3633;
+$secondary-dark: #83000D;
+
+$second-lighten: #D6F5FF;
+$second-light: #11C6FF;
+$second-normal: #00B1E9;
+$second-dark: #0093C2;
+$second-darken: #0079A0;
+
+$basic: #FFFFFF;
+
+$default-color: #3ce2ad;
+
+/* Custom color */
+$label-form-color: #303e67;
+$text-muted-color: #858585;
+$text-link-color: #3882FE;
+$card-header-background: #e2e8f1;

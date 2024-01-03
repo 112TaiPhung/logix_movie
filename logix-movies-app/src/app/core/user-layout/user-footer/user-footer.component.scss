@@ -1,0 +1,28 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  .container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 15px;
+    margin: auto;
+
+    .nav-footer {
+      margin: auto;
+      padding: 15px;
+
+      .item {
+        float: left;
+        width: 20%;
+        text-align: center;
+
+        ::ng-deep .mat-icon {
+          color: #000;
+          font-size: 45px;
+        }
+      }
+    }
+  }
+}

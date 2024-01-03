@@ -1,0 +1,147 @@
+<div class="control-table" id="control-table">
+  <div class="head-control">
+    <!-- Title table -->
+    <h3>{{ titleTable }}</h3>
+    <div class="right">
+      <!-- Input search -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Nhập từ khóa tìm kiếm</mat-label>
+        <button mat-icon-button matPrefix (click)="emitSearchKey()">
+          <mat-icon>search</mat-icon>
+        </button>
+        <input matInput #inputSearch (keyup.enter)="emitSearchKey()" />
+      </mat-form-field>
+
+      <!-- Dropdown import export -->
+      <ng-container *ngIf="JSON.stringify(optionsImportExport) !== '{}'">
+        <button mat-icon-button class="btn-white" [matMenuTriggerFor]="menu">
+          <img src="../../../assets/img/svg/icon-import-export.svg" alt="" />
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <ng-container *ngIf="optionsImportExport.template!.length > 0">
+            <button mat-menu-item disabled><span>Biểu mẫu</span></button>
+            <ng-container *ngFor="let item of optionsImportExport.template">
+              <ng-container *hasPermission="item.permission">
+                <button mat-menu-item (click)="clickEmitAction(item.type)">
+                  <mat-icon class="material-icons-outlined">file_download</mat-icon>
+                  <span>{{ item.title }}</span>
+                </button>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="optionsImportExport.download!.length > 0">
+            <button mat-menu-item disabled><span>Xuất danh sách</span></button>
+            <ng-container *ngFor="let item of optionsImportExport.download">
+              <ng-container *hasPermission="item.permission">
+                <button mat-menu-item (click)="clickEmitAction(item.type)">
+                  <mat-icon class="material-icons-outlined">file_download</mat-icon>
+                  <span>{{ item.title }}</span>
+                </button>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="optionsImportExport.upload!.length > 0">
+            <button mat-menu-item disabled><span>Nhập danh sách</span></button>
+            <ng-container *ngFor="let item of optionsImportExport.upload">
+              <ng-container *hasPermission="item.permission">
+                <button mat-menu-item (click)="clickEmitAction(item.type, true)">
+                  <mat-icon class="material-icons-outlined">file_upload</mat-icon>
+                  <span>{{ item.title }}</span>
+                </button>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </mat-menu>
+      </ng-container>
+
+      <!-- Button filter -->
+      <ng-container *ngIf="dataFilter.length > 0">
+        <button
+          *hasPermission="buttonsPermission"
+          mat-icon-button
+          class="btn-white"
+          [matBadge]="countExpendParam + filterType.length"
+          matBadgeColor="warn"
+          [matBadgeHidden]="filterType.length === 0 && countExpendParam === 0"
+          (click)="isShowFilterControl = !isShowFilterControl"
+        >
+          <img src="../../../assets/img/svg/icon-filter.svg" alt="" />
+        </button>
+      </ng-container>
+
+      <!-- Button Add -->
+      <button
+        mat-raised-button
+        class="btn-create"
+        color="primary"
+        (click)="clickEmitAction(TASK_ACTIONS.CREATE)"
+      >
+        <mat-icon>add</mat-icon>{{ titleButtonCreate }}
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="filter-control"
+    *ngIf="isShowFilterControl"
+    [ngStyle]="{ display: dataFilter.length > 0 ? 'flex' : 'none' }"
+  >
+    <ng-container *ngFor="let item of dataFilter">
+      <!-- Date range picker -->
+      <app-date-range-picker
+        *ngIf="item.type === TABLE_FILTER_TYPE.DATETIME_RANGE"
+        [title]="item.title"
+        [isClearFilter]="isClearFilter"
+        (dateRangeChange)="dateRangeChange($event, item.key)"
+      ></app-date-range-picker>
+
+      <!-- Year picker -->
+      <app-year-picker
+        *ngIf="item.type === TABLE_FILTER_TYPE.SELECT_YEAR"
+        [isClearFilter]="isClearFilter"
+        (yearChange)="yearChange($event, item.key)"
+      ></app-year-picker>
+
+      <!-- Month picker -->
+      <app-month-picker
+        *ngIf="item.type === TABLE_FILTER_TYPE.SELECT_MONTH"
+        [title]="item.title"
+        [isClearFilter]="isClearFilter"
+        (monthChange)="monthChange($event, item.key)"
+      ></app-month-picker>
+
+      <!-- Month range picker -->
+      <app-month-range-picker
+        #monthPickerComp
+        *ngIf="item.type === TABLE_FILTER_TYPE.MONTH_RANGE"
+        [title]="item.title"
+        [isClearFilter]="isClearFilter"
+        (monthRangeChange)="monthRangeChange($event, item.key)"
+      ></app-month-range-picker>
+
+      <!-- Selectbox -->
+      <app-selectbox
+        *ngIf="item.type === TABLE_FILTER_TYPE.SELECTBOX"
+        [title]="item.title"
+        [options]="item.options"
+        [isClearFilter]="isClearFilter"
+        (selectboxChange)="selectboxChange($event, item.key, item)"
+      ></app-selectbox>
+
+      <!-- Checkbox -->
+      <app-checkbox
+        *ngIf="item.type === TABLE_FILTER_TYPE.CHECKBOX"
+        [title]="item.title"
+        [options]="item.options"
+        [isClearFilter]="isClearFilter"
+        (checkboxChange)="checkboxChange($event, item.key)"
+      >
+      </app-checkbox>
+    </ng-container>
+
+    <!-- Button Clear -->
+    <button mat-icon-button color="primary" class="btn-clear" (click)="clearSearch()">
+      <mat-icon class="material-icons-outlined">close</mat-icon>
+    </button>
+  </div>
+</div>

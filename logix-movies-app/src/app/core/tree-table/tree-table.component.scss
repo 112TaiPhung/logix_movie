@@ -1,0 +1,47 @@
+.wrapper-table {
+  overflow: auto;
+  padding-bottom: 1px;
+  .table {
+    width: 100%;
+    ::ng-deep {
+      thead {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        background: #ffffff;
+        z-index: 9;
+      }
+      .mat-column-actions {
+        .mat-icon-button {
+          width: 30px;
+          height: 30px;
+          img {
+            vertical-align: text-top;
+          }
+        }
+      }
+      th.mat-header-cell {
+        padding-right: 15px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 14px;
+        color: #4d5d7d;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      td.mat-cell,
+      td.mat-footer-cell {
+        padding-right: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .material-icons-outlined {
+        font-size: 18px;
+        background: none;
+        vertical-align: baseline;
+      }
+    }
+  }
+}

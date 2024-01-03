@@ -1,0 +1,43 @@
+<header class="header" [ngClass]="{ toggle: isToggleMenu }">
+  <div class="left">Hi, You. Welcome to movie hub</div>
+  <div class="right">
+    <div class="user" [matMenuTriggerFor]="menu">
+      <div class="wrap-img">
+        <img src="../../../../assets/img/user-empty.png" alt="" />
+      </div>
+      <p *ngIf="user.fullName">{{ user.fullName }}</p>
+      <p *ngIf="!user.fullName">{{ user.email }}</p>
+      <mat-menu #menu="matMenu" panelClass="panelClass">
+        <a mat-menu-item (click)="changePassword()">Đổi mật khẩu</a>
+        <a mat-menu-item (click)="logout()">Đăng xuất</a>
+      </mat-menu>
+    </div>
+    <!-- <div class="notify">
+      <img src="../../../../assets/img/svg/icon-notify.svg" alt="" />
+    </div> -->
+    <div class="btn-menu" (click)="isToggleMenu = !isToggleMenu">
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="menu">
+    <div class="btn-menu" (click)="isToggleMenu = !isToggleMenu">
+      <button mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="info">
+      <div class="user" [matMenuTriggerFor]="menu">
+        <div class="wrap-img">
+          <img src="../../../../assets/img/user-empty.png" alt="" />
+        </div>
+        <p *ngIf="user.fullName">{{ user.fullName }}</p>
+        <p *ngIf="!user.fullName">{{ user.email }}</p>
+      </div>
+      <!-- <div class="notify">
+        <img src="../../../../assets/img/svg/icon-notify.svg" alt="" />
+      </div> -->
+    </div>
+  </div>
+</header>

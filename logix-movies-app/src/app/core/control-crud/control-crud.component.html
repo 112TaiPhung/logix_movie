@@ -1,0 +1,64 @@
+<div class="actions" id="ctrlCrud">
+  <div class="left">
+    <button type="button" mat-icon-button class="btn-back" routerLink="/{{ linkReturn }}">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h3>{{ title }}</h3>
+  </div>
+  <div class="right">
+    <button
+      mat-raised-button
+      type="button"
+      color="warn"
+      [disabled]="pageStatus === PAGE_STATUS.CREATE"
+      (click)="clickDelete()"
+    >
+      <mat-icon class="material-icons-outlined">delete</mat-icon>
+      Xóa
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      color="primary"
+      [disabled]="pageStatus === PAGE_STATUS.CREATE || pageStatus === PAGE_STATUS.UPDATE"
+      (click)="clickEdit()"
+    >
+      <mat-icon class="material-icons-outlined">edit</mat-icon>
+      Chỉnh sửa
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      [disabled]="pageStatus === PAGE_STATUS.READ || pageStatus === PAGE_STATUS.UPDATE"
+      (click)="clickSaveAndContinue()"
+    >
+      Lưu và tiếp tục
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="clickSave()"
+      [disabled]="pageStatus === PAGE_STATUS.READ"
+    >
+      <mat-icon class="material-icons-outlined">save</mat-icon>
+      Lưu
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      *ngIf="pageStatus !== PAGE_STATUS.UPDATE"
+      [disabled]="pageStatus === PAGE_STATUS.READ"
+      (click)="clickReFill()"
+    >
+      Nhập lại
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      *ngIf="pageStatus === PAGE_STATUS.UPDATE"
+      (click)="clickCancel()"
+    >
+      Hủy bỏ
+    </button>
+  </div>
+</div>

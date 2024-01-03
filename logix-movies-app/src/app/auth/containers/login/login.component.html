@@ -1,0 +1,40 @@
+<auth-layout [title]="'Đăng nhập'">
+  <ng-container auth-layout="body">
+    <form [formGroup]="reactiveForm">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nhập username hoặc email</mat-label>
+        <input
+          matInput
+          type="email"
+          placeholder="user@example.com"
+          formControlName="email"
+          (keyup.enter)="onSubmit()"
+        />
+        <mat-error *ngIf="formErrors['email']">{{ formErrors['email'] }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nhập mật khẩu</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          [type]="hidePassword ? 'password' : 'text'"
+          (keyup.enter)="onSubmit()"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hidePassword"
+        >
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="formErrors['password']">{{ formErrors['password'] }}</mat-error>
+      </mat-form-field>
+      <div class="button-group">
+        <button (click)="onSubmit()" mat-raised-button color="warn">Đăng nhập</button>
+        <a mat-button [routerLink]="['/authentication/forgot-password']">Quên mật khẩu</a>
+      </div>
+    </form>
+  </ng-container>
+</auth-layout>
